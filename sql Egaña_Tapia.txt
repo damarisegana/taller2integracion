@@ -1,0 +1,32 @@
+CREATE DATABASE `taller3` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE TABLE `categoria` (
+  `id` int(11) NOT NULL,
+  `descripción` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `pelicula` (
+  `codigo` int(11) NOT NULL,
+  `precio` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `formato4k` varchar(1) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `id_categoria_fk_idx` (`id_categoria`),
+  CONSTRAINT `id_categoria_fk` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into taller3.categoria VALUES (1, 'Acción');
+insert into taller3.categoria VALUES (2, 'Aventura');
+insert into taller3.categoria VALUES (3, 'Ciencia Ficción');
+insert into taller3.categoria VALUES (4, 'Comedia');
+insert into taller3.categoria VALUES (5, 'Crimen');
+insert into taller3.categoria VALUES (6, 'Drama');
+insert into taller3.categoria VALUES (7, 'Histórico');
+insert into taller3.categoria VALUES (8, 'Horror');
+insert into taller3.categoria VALUES (9, 'Musical');
+
+
+insert into taller3.pelicula VALUES (10000 , 15000, 2, 'S', 'Lord of the Ring');
+insert into taller3.pelicula VALUES (10001 , 12000, 4, 'S', 'Legally Blonde');
+insert into taller3.pelicula VALUES (10002 , 17000, 1, 'S', 'Fast 7');
